@@ -2,13 +2,13 @@ DELIMITER $$
 
 CREATE TRIGGER trigger_usuario_delete
 BEFORE DELETE
-ON usuarios FOR EACH ROW
+ON users FOR EACH ROW
 BEGIN
 
-DELETE FROM historico_de_reproducoes
-WHERE historico_de_reproducoes.usuario_id = OLD.usuario_id;
-DELETE FROM seguindo_artistas
-WHERE seguindo_artistas.usuario_id = OLD.usuario_id;
+DELETE FROM user_history
+WHERE user_history.user_id = OLD.user_id;
+DELETE FROM user_following
+WHERE user_following.user_id = OLD.user_id;
 
 END$$    
 
